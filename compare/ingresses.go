@@ -14,12 +14,12 @@ func CompareIngresses(clientsetToSource, clientsetToTarget *kubernetes.Clientset
 	var TheDiff []DAO.DiffWithName
 	sourceIngresses, err := query.ListIngresses(clientsetToSource, namespaceName)
 	if err != nil {
-		fmt.Printf("Error getting services list: %v\n", err)
+		fmt.Printf("Error getting ingresses list: %v\n", err)
 		return TheDiff, err
 	}
-	targetIngresses, err := query.ListIngresses(clientsetToSource, namespaceName)
+	targetIngresses, err := query.ListIngresses(clientsetToTarget, namespaceName)
 	if err != nil {
-		fmt.Printf("Error getting services list: %v\n", err)
+		fmt.Printf("Error getting ingresses list: %v\n", err)
 		return TheDiff, err
 	}
 	var diffCriteria []string

@@ -17,7 +17,7 @@ func CompareServices(clientsetToSource, clientsetToTarget *kubernetes.Clientset,
 		fmt.Printf("Error getting services list: %v\n", err)
 		return TheDiff, err
 	}
-	targetServices, err := query.ListServices(clientsetToSource, namespaceName)
+	targetServices, err := query.ListServices(clientsetToTarget, namespaceName)
 	if err != nil {
 		fmt.Printf("Error getting services list: %v\n", err)
 		return TheDiff, err

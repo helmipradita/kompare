@@ -12,12 +12,12 @@ import (
 
 func CompareSecrets(clientsetToSource, clientsetToTarget *kubernetes.Clientset, namespaceName string, TheArgs cli.ArgumentsReceivedValidated) ([]DAO.DiffWithName, error) {
 	var TheDiff []DAO.DiffWithName
-	sourceSecrets, err := query.ListServices(clientsetToSource, namespaceName)
+	sourceSecrets, err := query.ListSecrets(clientsetToSource, namespaceName)
 	if err != nil {
 		fmt.Printf("Error getting secrets list: %v\n", err)
 		return TheDiff, err
 	}
-	targetSecrets, err := query.ListServices(clientsetToSource, namespaceName)
+	targetSecrets, err := query.ListSecrets(clientsetToTarget, namespaceName)
 	if err != nil {
 		fmt.Printf("Error getting secrets list: %v\n", err)
 		return TheDiff, err

@@ -14,12 +14,12 @@ func CompareCronJobs(clientsetToSource, clientsetToTarget *kubernetes.Clientset,
 	var TheDiff []DAO.DiffWithName
 	sourceCronJobs, err := query.ListCronJobs(clientsetToSource, namespaceName)
 	if err != nil {
-		fmt.Printf("Error getting services list: %v\n", err)
+		fmt.Printf("Error getting cronjobs list: %v\n", err)
 		return TheDiff, err
 	}
-	targetCronJobs, err := query.ListCronJobs(clientsetToSource, namespaceName)
+	targetCronJobs, err := query.ListCronJobs(clientsetToTarget, namespaceName)
 	if err != nil {
-		fmt.Printf("Error getting services list: %v\n", err)
+		fmt.Printf("Error getting cronjobs list: %v\n", err)
 		return TheDiff, err
 	}
 	var diffCriteria []string

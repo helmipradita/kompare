@@ -14,12 +14,12 @@ func CompareHPAs(clientsetToSource, clientsetToTarget *kubernetes.Clientset, nam
 	var TheDiff []DAO.DiffWithName
 	sourceHPAs, err := query.ListHPAs(clientsetToSource, namespaceName)
 	if err != nil {
-		fmt.Printf("Error getting services list: %v\n", err)
+		fmt.Printf("Error getting hpa list: %v\n", err)
 		return TheDiff, err
 	}
-	targetHPAs, err := query.ListHPAs(clientsetToSource, namespaceName)
+	targetHPAs, err := query.ListHPAs(clientsetToTarget, namespaceName)
 	if err != nil {
-		fmt.Printf("Error getting services list: %v\n", err)
+		fmt.Printf("Error getting hpa list: %v\n", err)
 		return TheDiff, err
 	}
 	var diffCriteria []string

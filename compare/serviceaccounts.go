@@ -12,12 +12,12 @@ import (
 
 func CompareServiceAccounts(clientsetToSource, clientsetToTarget *kubernetes.Clientset, namespaceName string, TheArgs cli.ArgumentsReceivedValidated) ([]DAO.DiffWithName, error) {
 	var TheDiff []DAO.DiffWithName
-	sourceServiceAccounts, err := query.ListServices(clientsetToSource, namespaceName)
+	sourceServiceAccounts, err := query.ListServiceAccounts(clientsetToSource, namespaceName)
 	if err != nil {
 		fmt.Printf("Error getting service accounts list: %v\n", err)
 		return TheDiff, err
 	}
-	targetServiceAccounts, err := query.ListServices(clientsetToSource, namespaceName)
+	targetServiceAccounts, err := query.ListServiceAccounts(clientsetToTarget, namespaceName)
 	if err != nil {
 		fmt.Printf("Error getting service accounts list: %v\n", err)
 		return TheDiff, err
